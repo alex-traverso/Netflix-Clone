@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import GithubIcon from "../../../public/github-white.svg";
 import Image from "next/image";
+import GithubIcon from "../../../public/github-white.svg";
 import { signIn } from "next-auth/react";
 
 import React from "react";

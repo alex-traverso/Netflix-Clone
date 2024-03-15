@@ -1,8 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
 import GoogleIcon from "../../../public/google.svg";
+import { signIn } from "next-auth/react";
 
 import React from "react";
 

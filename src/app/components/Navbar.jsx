@@ -5,6 +5,7 @@ import Link from "next/link";
 import Logo from "../../../public/netflix_logo.svg";
 import { usePathname } from "next/navigation";
 import { Bell, Search } from "lucide-react";
+import UserNav from "./UserNav";
 
 const links = [
   {
@@ -45,7 +46,7 @@ export default function Navbar() {
                 <li>
                   <Link
                     href={link.href}
-                    className="text-white font-semibold underline text-sm cursor-pointer"
+                    className="text-white font-semibold underline text-base cursor-pointer"
                   >
                     {link.name}
                   </Link>
@@ -54,7 +55,7 @@ export default function Navbar() {
                 <li>
                   <Link
                     href={link.href}
-                    className="text-gray-300 font-normal text-sm transition-all hover:text-white cursor-pointer"
+                    className="text-gray-300 font-normal text-base transition-all hover:text-white cursor-pointer"
                   >
                     {link.name}
                   </Link>
@@ -66,8 +67,9 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-x-8">
-        <Search className="w-5 h-5 text-gray-300 cursor-pointer" />
-        <Bell className="w-5 h-5 text-gray-300 cursor-pointer" />
+        <Search className="w-6 h-6 text-gray-300 cursor-pointer" />
+        <Bell className="w-6 h-6 text-gray-300 cursor-pointer" />
+        <UserNav />
       </div>
     </div>
   );

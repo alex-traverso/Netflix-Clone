@@ -1,9 +1,9 @@
 import Navbar from "../components/Navbar";
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <>
-      <Navbar />
+      <h1>Hello from home</h1>
     </>
   );
 }

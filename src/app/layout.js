@@ -12,6 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/public/netflix_logo.svg" />
+      </head>
       <body className={inter.className}>
         <NextAuthProvider>{children}</NextAuthProvider>
       </body>
