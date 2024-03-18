@@ -12,6 +12,9 @@ const getData = async () => {
       WatchLists: true,
       imageString: true,
       youtubeString: true,
+      age: true,
+      release: true,
+      duration: true,
     },
     orderBy: {
       createdAt: "desc",
@@ -49,9 +52,12 @@ const RecentlyAdded = async () => {
                 overview={movie.overview}
                 movieId={movie.movieId}
                 watchList={movie.WatchLists.length > 0 ? true : false}
-                watchListId={movie.WatchLists.id}
+                watchListId={movie.WatchLists[0]?.id}
                 youtubeUrl={movie.youtubeString}
                 key={movie.id}
+                year={movie.release}
+                age={movie.age}
+                time={movie.duration}
               />
             </div>
           </div>

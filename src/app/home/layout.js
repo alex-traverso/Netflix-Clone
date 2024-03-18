@@ -12,7 +12,7 @@ export default async function HomeLayout({ children }) {
   return (
     <>
       <Navbar />
-      <main className="w-full mx-auto sm:px-6 lg:px-8">{children}</main>
+      <main className="w-full mx-auto sm:px-6 lg:px-20">{children}</main>
     </>
   );
 }

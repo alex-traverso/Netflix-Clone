@@ -1,6 +1,6 @@
 import React from "react";
 import prisma from "../utils/db";
-import { Button } from "@/components/ui/button";
+import MovieButtons from "./MovieButtons";
 
 const getData = async () => {
   const data = await prisma.movie.findFirst({
@@ -13,6 +13,7 @@ const getData = async () => {
       duration: true,
       id: true,
       age: true,
+      youtubeString: true,
     },
   });
   return data;
@@ -21,7 +22,7 @@ const getData = async () => {
 const MovieVideo = async () => {
   const data = await getData();
   return (
-    <div className="h-[55vh] lg:px-12 lg:h-[60vh] w-full flex justify-start items-center">
+    <div className="h-[55vh] lg:h-[60vh] w-full flex justify-start items-center">
       <video
         poster={data?.imageString}
         autoPlay
@@ -36,8 +37,16 @@ const MovieVideo = async () => {
         </h1>
         <p className="text-white text-lg mt-5 line-clamp-3">{data.overview}</p>
         <div className="flex gap-x-3 mt-4">
-          <Button>See more</Button>
-          <Button>Learn more</Button>
+          <MovieButtons
+            age={data?.age}
+            duration={data?.duration}
+            id={data?.id}
+            overview={data?.overview}
+            releaseDate={data?.release}
+            title={data?.title}
+            youtubeUrl={data?.youtubeString}
+            key={data?.id}
+          />
         </div>
       </div>
     </div>
