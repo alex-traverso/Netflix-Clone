@@ -16,12 +16,10 @@ export async function addToWatchList(formData) {
     data: {
       userId: session?.user?.email,
       movieId: Number(movieId),
-      /* Si pongo un numero ya existente toma ese nro como id, por default toma el 0 por eso siempre pone la pelicula de gran turismo */
     },
   });
 
   revalidatePath(pathname);
-  console.log(data);
 }
 
 export async function deleteFromWatchList(formData) {
