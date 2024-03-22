@@ -2,20 +2,23 @@
 import { Button } from "@/components/ui/button";
 import { Heart, PlayCircle } from "lucide-react";
 import React, { useState } from "react";
-import PlayVideoModel from "./PlayVideoModal";
+import PlayVideoModal from "./PlayVideoModal";
+import { addToWatchList, deleteFromWatchList } from "../action";
+import { usePathname } from "next/navigation";
 
 const MovieCard = ({
-  title,
-  overview,
   movieId,
-  watchList,
+  overview,
+  title,
   watchListId,
+  watchList,
   youtubeUrl,
-  year,
   age,
   time,
+  year,
 }) => {
   const [open, setOpen] = useState(false);
+  const pathName = usePathname();
 
   return (
     <>
@@ -24,15 +27,21 @@ const MovieCard = ({
       </button>
       <div className="right-5 top-5 absolute z-10">
         {watchList ? (
-          <form action="">
-            <Button variant="ghost" size="icon">
-              <Heart className="w-4 h-4 text-red-50" />
+          <form action={deleteFromWatchList}>
+            <input type="hidden" name="watchListId" value={watchListId} />
+            <input type="hidden" name="pathname" value={pathName} />
+            <Button variant="outline" size="icon">
+              <Heart className="w-4 h-4 text-red-500" />
             </Button>
           </form>
         ) : (
-          <Button variant="ghost" size="icon">
-            <Heart className="w-4 h-4" />
-          </Button>
+          <form action={addToWatchList}>
+            <input type="hidden" name="movieId" value={movieId} />
+            <input type="hidden" name="pathname" value={pathName} />
+            <Button variant="outline" size="icon">
+              <Heart className="w-4 h-4" />
+            </Button>
+          </form>
         )}
       </div>
 
@@ -49,7 +58,7 @@ const MovieCard = ({
           {overview}
         </p>
       </div>
-      <PlayVideoModel
+      <PlayVideoModal
         youtubeUrl={youtubeUrl}
         key={movieId}
         title={title}

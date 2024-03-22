@@ -83,9 +83,8 @@ const getData = async (category, userId) => {
 };
 
 const CategoryPage = async ({ params }) => {
-  console.log(params);
   const session = await getServerSession(authOptions);
-  const data = await getData(params.genre, "abc");
+  const data = await getData(params.genre, session?.user?.email);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-5 sm:px-0 mt-10 gap-6">
       {data.map((movie) => (
@@ -108,8 +107,9 @@ const CategoryPage = async ({ params }) => {
               />
               <MovieCard
                 title={movie.title}
+                id={movie.id}
                 overview={movie.overview}
-                movieId={movie.movieId}
+                movieId={movie.id}
                 watchList={movie.WatchLists.length > 0 ? true : false}
                 watchListId={movie.WatchLists[0]?.id}
                 youtubeUrl={movie.youtubeString}
