@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Spinner from "@/components/ui/spinner";
+import Spinner from "@/components/ui/Spinner";
 import { useSession, signOut } from "next-auth/react";
 
 export default function UserNav() {
